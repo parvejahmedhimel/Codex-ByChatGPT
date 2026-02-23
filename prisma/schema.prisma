@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  passwordHash  String
+  createdAt     DateTime  @default(now())
+  enrollments   Enrollment[]
+  examAttempts  ExamAttempt[]
+}
+
+model Course {
+  id          String       @id @default(cuid())
+  title       String
+  description String
+  price       Int
+  level       String
+  createdAt   DateTime     @default(now())
+  enrollments Enrollment[]
+}
+
+model Enrollment {
+  id        String   @id @default(cuid())
+  userId    String
+  courseId  String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId])
+}
+
+model Exam {
+  id          String        @id @default(cuid())
+  title       String
+  description String
+  createdAt   DateTime      @default(now())
+  questions   ExamQuestion[]
+  attempts    ExamAttempt[]
+}
+
+model ExamQuestion {
+  id         String  @id @default(cuid())
+  examId      String
+  prompt      String
+  optionsJson String
+  answerIndex Int
+  exam        Exam    @relation(fields: [examId], references: [id], onDelete: Cascade)
+}
+
+model ExamAttempt {
+  id        String   @id @default(cuid())
+  userId    String
+  examId    String
+  score     Int
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  exam      Exam     @relation(fields: [examId], references: [id], onDelete: Cascade)
+}
