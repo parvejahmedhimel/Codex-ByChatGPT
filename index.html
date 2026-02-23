@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduLaunch | Courses & Exams</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar__inner">
+        <h1>EduLaunch</h1>
+        <nav>
+          <a href="#courses">Courses</a>
+          <a href="#exams">Exams</a>
+          <a href="#dashboard">Dashboard</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero__grid">
+        <div>
+          <p class="tag">All‑in‑one learning portal</p>
+          <h2>Sell Courses, Run Exams, Track Student Progress</h2>
+          <p>
+            A ready website template for educational businesses: publish paid courses,
+            enroll students, and conduct timed online exams from one dashboard.
+          </p>
+          <button id="exploreBtn" class="btn">Explore Courses</button>
+        </div>
+        <div class="hero__card">
+          <h3>Today at a glance</h3>
+          <ul>
+            <li><strong id="enrolledCount">0</strong> Enrolled courses</li>
+            <li><strong id="avgScore">0%</strong> Average exam score</li>
+            <li><strong>24/7</strong> Student access</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <main class="container main-grid">
+      <section id="courses">
+        <div class="section-header">
+          <h3>Featured Courses</h3>
+          <span>Click enroll to simulate a purchase</span>
+        </div>
+        <div id="courseGrid" class="course-grid"></div>
+      </section>
+
+      <section id="exams">
+        <div class="section-header">
+          <h3>Quick Exam Demo</h3>
+          <span>Timed multiple-choice practice test</span>
+        </div>
+        <div class="exam-card">
+          <div class="exam-meta">
+            <p><strong>Time left:</strong> <span id="timer">03:00</span></p>
+            <p><strong>Questions:</strong> 5</p>
+          </div>
+          <div id="examArea"></div>
+          <button id="submitExam" class="btn btn--secondary">Submit Exam</button>
+          <p id="examResult" class="result"></p>
+        </div>
+      </section>
+
+      <section id="dashboard">
+        <div class="section-header">
+          <h3>Student Dashboard</h3>
+          <span>Live summary for your learners</span>
+        </div>
+        <div class="dashboard-grid">
+          <article>
+            <h4>Enrolled Courses</h4>
+            <ul id="enrolledList" class="clean-list">
+              <li>No courses enrolled yet.</li>
+            </ul>
+          </article>
+          <article>
+            <h4>Recent Exam Scores</h4>
+            <ul id="scoreList" class="clean-list">
+              <li>No exam submitted yet.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>© 2026 EduLaunch • Demo educational platform website</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
